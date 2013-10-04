@@ -49,7 +49,7 @@ _Note: Depending on your ruby setup you may need to install gems using `sudo gem
 Installing Grunt & Grunt Packages
 ----------------------------
 
-First, clone a copy of this git repo by running:
+First, [clone a copy of this git repo](github-mac://openRepo/https://github.com/jpdevries/coreyswarren) by running:
 
 ```bash
 git clone git://github.com/jpdevries/coreyswarren.git
