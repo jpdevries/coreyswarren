@@ -1,0 +1,7 @@
+/* TEAM */
+	Developer: Corey Warren
+	Contact:   corey@livemorecreative.com
+	URI:       http://coreyswarren.com
+
+/* SITE */
+	Created:  2013-10-04
