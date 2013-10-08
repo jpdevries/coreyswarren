@@ -76,6 +76,7 @@ module.exports = function(grunt) {
 			h5bp: {
 				src: [
 					'<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>plugins.js',
+					'<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>vendor/jquery.flexslider.js',
 					'<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main.js'
 				],
 				dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-dev.js', 

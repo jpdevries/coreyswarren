@@ -5,10 +5,19 @@
 @import "html5-boilerplate/main";
 @import "html5-boilerplate/normalize";
 
-
 @import "font-awesome/font-awesome";
 
-body {
-	color:red;
+@import "globals/globals";
+@import "components/components";
+@import "layout/layout";
+@import "base/base";
+
+
+.logo {
+	@include retina-image($imgPath + 'sprite.png', 222px 67px);
+}
+
+.svg .logo {
+	background-image:url($imgPath + 'sprite.svg');
 }
 
