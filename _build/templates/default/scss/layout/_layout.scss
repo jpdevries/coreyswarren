@@ -44,7 +44,9 @@ header {
 		ul {
 			
 			li {
-				
+				a {
+					padding:0 pxToRem(12px);
+				}
 				&.home {
 					width:222px;
 					height:67px;
@@ -84,6 +86,8 @@ $gutter:16px;
 			ul {
 				@include flexbox();
 				li {
+					padding-left:0;
+					padding-right:0;
 					@include flex(1,1);
 					&.home {
 						@include flex(0,0);
@@ -111,8 +115,11 @@ footer {
 			li {
 				&.csw-1986 {
 					a {
-
+						
 					}
+				}
+				a {
+					padding:0 pxToRem(12px);
 				}
 			}
 	}
