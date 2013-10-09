@@ -64,12 +64,17 @@ header {
 		@extend %naked-list;
 	}
 }
-
+$gutter:16px;
 .no-js {
 	.flexslider {
 		li {
-			margin-bottom:16px;
+			margin-bottom:$gutter;
 		}
+	}
+}
+.slides {
+	img {
+		margin-bottom:$gutter / 2;
 	}
 }
 
@@ -115,5 +120,74 @@ footer {
 		@include span-columns(12);
 		padding:0;
 		margin-top:2px;
+	}
+}
+
+.twocol {
+	.stage {
+		@include outer-container();
+		padding:90px 90px 90px 90px;
+		.sidebar {
+			text-align:center;
+			@include span-columns(3);
+		}
+		.content {
+			@include span-columns(9);
+			padding-left:pxToRem(36px);
+		}
+	}
+}
+
+.twocol.contact {
+	.stage {
+		.sidebar {
+			text-align:right;
+			padding:0 1em;
+			@include span-columns(4);
+			p {
+				text-indent:0;
+			}
+		}
+		.content {
+			@include span-columns(8);
+		}
+		form {
+			div {
+				margin-bottom:pxToRem(24px);
+				@include outer-container();
+			}
+			label {
+				@include span-columns(4);
+				text-align:right;
+			}
+			input,textarea {
+				@include span-columns(8);
+			}
+			button {
+				float:right;
+			}
+		}
+	}
+}
+
+.about {
+	.sidebar {
+		img {
+			margin:0 auto;
+			margin-bottom:1em;
+		}
+		ul {
+			@extend %naked-list;
+			font-style:italic;
+			text-transform:uppercase;
+			font-size:pxToRem(11px);
+			font-weight:bold;
+			li {
+				margin-bottom:pxToRem(6px);
+				&:last-of-type {
+					margin-bottom:0;
+				}
+			}
+		}
 	}
 }

@@ -1,9 +1,25 @@
 @import "vars";
 @import "flexslider";
 
+a {
+	@include transition(all 240ms ease-out);
+	cursor:pointer;
+	&:hover, &.current, &.active {
+		color:$action;
+	}
+}
+
 nav,ul,ol {
 	margin:0;
 	padding:0;
+}
+
+p {
+	text-indent:1em;
+}
+
+textarea {
+	resize:none;
 }
 
 header {
@@ -109,6 +125,26 @@ footer {
 	}
 	.copyright {
 		@extend %tiny-type;
+	}
+}
+
+.photography, .design {
+	header {
+		z-index:$topMost;
+		position:relative;
+		background:$white;
+		background:rgba($white,0.5);
+	}
+	.content {
+		margin-top:-110px;
+		position:relative;
+		z-index:1;
+	}
+}
+
+.contact {
+	aside {
+		background:$desturated;
 	}
 }
 
