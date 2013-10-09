@@ -14,5 +14,14 @@
 				margin:0;
 			}
 		}
+		
+	.flex-direction-nav {
+		color:$white;
+		a {
+			&:hover {
+				color:inherit;
+			}
+		}
+	}
 
 }

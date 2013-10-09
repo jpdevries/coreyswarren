@@ -1,6 +1,10 @@
 @import "vars";
 @import "flexslider";
 
+$wg1024: new-breakpoint(min-width 1024px);
+$wl960: new-breakpoint(max-width $siteW);
+$wl768: new-breakpoint(max-width 768px);
+
 * {
 	@include box-sizing(border-box);
 }
@@ -14,14 +18,29 @@ html { font-size: 100%; }
 
 body {
 	text-align:center;
-	padding:36px;
+	padding:36px 0;
 	font-size:pxToRem(12px);
 }
 
 #wrapper {
 	width:$siteW;
+	
+	.content {
+		max-width:758px;
+		text-align:left;
+		margin:0 auto;
+	}
+	
 	margin:0 auto;
-	text-align:left;
+	text-align:center;
+	@include media($wg1024) {
+		width:1024px;
+	}
+	@include media($wl960) {
+		width:100%;
+		max-width:100%;
+	}
+	
 }
 
 %horz-nav {
@@ -34,6 +53,9 @@ body {
 		text-align:center;
 		a {
 			
+		}
+		@include media($wl768) {
+			float:none;
 		}
 	}
 }
@@ -48,8 +70,22 @@ header {
 					padding:0 pxToRem(12px);
 				}
 				&.home {
-					width:222px;
+					width:100%;
 					height:67px;
+					width:222px;
+					max-width:222px;
+					a {
+						
+					}
+					@include media($wl768) {
+						width:100%;
+						max-width:100%;
+						text-align:center;
+						a {
+							width:222px;
+							margin:0 auto;
+						}
+					}
 				}
 			}
 		}
@@ -95,6 +131,38 @@ $gutter:16px;
 					a {
 						display:inline-block;
 						width:100%;
+					}
+				}
+			}
+		}
+		@include media($wl768) {
+			nav {
+				ul {
+					height:auto;
+					margin-bottom:1em;
+					width:100%;
+					max-width:100%;
+					@include flexbox(flex,row,wrap);
+					li {
+						float:none;
+						border-bottom:none;
+						a {
+							border-right:none;
+						}
+						padding-top:1em;
+						padding-bottom:1em;
+						@include flex(1,1);
+						width:100%;
+						&.home {
+							/*width:100%;
+														max-width:100%;*/
+							text-align:center;
+							a {
+								margin:0 auto;
+								width:222px;
+								max-width:222px;
+							}
+						}
 					}
 				}
 			}

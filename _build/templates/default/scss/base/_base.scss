@@ -1,9 +1,10 @@
-@import "vars";
 @import "flexslider";
 
 a {
 	@include transition(all 240ms ease-out);
 	cursor:pointer;
+	color:inherit;
+	text-decoration:none;
 	&:hover, &.current, &.active {
 		color:$action;
 	}
@@ -149,9 +150,12 @@ footer {
 		background:rgba($white,0.5);
 	}
 	.content {
-		margin-top:-110px;
+		margin-top:-110px !important;
 		position:relative;
 		z-index:1;
+		@include media($wl768) {
+			margin-top:-76px !important;
+		}
 	}
 }
 
