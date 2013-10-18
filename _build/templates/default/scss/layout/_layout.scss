@@ -2,8 +2,11 @@
 @import "flexslider";
 
 $wg1024: new-breakpoint(min-width 1024px);
-$wl960: new-breakpoint(max-width $siteW);
+$wl960: new-breakpoint(max-width $siteW min-width 768px);
 $wl768: new-breakpoint(max-width 768px);
+$wl660: new-breakpoint(max-width 660px min-width 480px);
+$wl480: new-breakpoint(max-width 480px);
+
 
 * {
 	@include box-sizing(border-box);
@@ -16,19 +19,69 @@ img,video {
 
 html { font-size: 100%; }
 
+html,body {
+	height:100%;
+}
+
 body {
 	text-align:center;
-	padding:36px 0;
+	padding:36px; 
 	font-size:pxToRem(12px);
+	@include media($wl768) {
+		padding:0;
+	}
+}
+
+.instagram {
+	div {
+		margin:10px 10px 0 0;
+	}
+}
+
+.no-js,.no-flexbox {
+	.instagram {
+		@extend %clearfix;
+		div {
+			float:left;
+			margin:10px 10px 0 0;
+		}
+	}
+}
+
+/* @mixin flexbox( $display: flex, $direction: row, $wrap: wrap, $justify: start, $items: start, $content: start ) */
+.flexbox {
+	.instagram {
+		@include flexbox(flex,row,wrap,center,center,center);
+		div {
+			@include flex(0,0);
+		}
+	}
+}
+
+%wrapper-block {
+	width:$siteW !important;
+	@include media($wl768) {
+		width:auto !important;
+	}
 }
 
 #wrapper {
-	width:$siteW;
-	
+	@extend %wrapper-block;
+	.stage {
+		margin-top:82px + 15;
+		@include media($wl768) {
+			margin-top:0;
+		}
+	}
 	.content {
 		max-width:758px;
 		text-align:left;
 		margin:0 auto;
+		/*margin-top:80px;*/
+		&.vanity {
+			max-width:none;
+			padding:0;
+		}
 	}
 	
 	margin:0 auto;
@@ -90,6 +143,66 @@ header {
 			}
 		}
 	}
+	&.main-nav {
+		position:fixed !important;
+		left:0;
+		right:0;
+		top:0;
+		text-align:center;
+		padding-top:40px;
+		nav {
+			@extend %wrapper-block;
+			margin:0 auto;
+		}
+		@include media($wl768) {
+			position:inherit !important;
+			left:auto;
+			right:auto;
+		}
+	}
+}
+
+/* #shame */
+.no-flexbox, .no-js {
+	header {
+		nav {
+			ul {
+				li {
+					&.visual { width:124px }
+					&.photography { width:180px }
+					&.environmental { width:177px }
+					&.about { width:121px }
+					&.contact { width:135px }
+					a {
+						width:100%;
+						display:inline-block;
+					}
+					@include media($wl768) {
+						width:auto !important;
+					}
+				}
+			}
+		}
+	}
+	footer {
+		nav {
+			li {
+				&.visual { width:123px }
+				&.photography { width:158px }
+				&.environmental { width:165px }
+				&.about { width:122px }
+				&.contact { width:133px }
+				&.instagram { width:144px }
+				a {
+					width:100%;
+					display:inline-block;
+				}
+				@include media($wl768) {
+					width:auto !important;
+				}
+			}
+		}
+	}
 }
 
 .content {
@@ -113,6 +226,19 @@ $gutter:16px;
 .slides {
 	img {
 		margin-bottom:$gutter / 2;
+	}
+	li {
+		margin-bottom:50px;
+	}
+	a {
+		display:block;
+	}
+}
+.flexslider {
+	.slides {
+		li {
+			margin:0;
+		}
 	}
 }
 
@@ -173,10 +299,32 @@ $gutter:16px;
 footer {
 	@include outer-container;
 	max-width:none;
+	
+	/*position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	text-align:center;
+	z-index:$topMost;*/
+	
 	nav {
-		@include span-columns(12);
+		li {
+			&.csw-1986 {
+				padding-left:1.5em;
+				padding-right:1.5em;
+				a {
+
+				}
+			}
+		}
+	}
+	
+	div {
+		@extend %wrapper-block;
+		margin:0 auto;
+		/*@include span-columns(12);*/
 		@extend %horz-nav;
-		margin:0;
+		
 		ul {
 			
 		}
@@ -195,20 +343,55 @@ footer {
 		@include span-columns(12);
 		padding:0;
 		margin-top:2px;
+		text-align:left;
+	}
+
+	
+	@include media($wl768) {
+		position:inherit;
+		left:auto;
+		right:auto;
+		bottom:auto;
+		.copyright {
+			text-align:center;
+		}
 	}
 }
 
 .twocol {
 	.stage {
 		@include outer-container();
-		padding:90px 90px 90px 90px;
+		padding:90px;
+		@include media($wl768) {
+			padding:45px;
+		}
 		.sidebar {
 			text-align:center;
 			@include span-columns(3);
+			
 		}
 		.content {
 			@include span-columns(9);
 			padding-left:pxToRem(36px);
+			/*margin-top:0 !important;*/
+			@include media($wl768) {
+				@include span-columns(12);
+			}
+		}
+	}
+	.stage {
+		@include media($wl660) {
+			padding:60px;
+		}
+	}
+	@include media($wl480) {
+		.stage {
+			.sidebar {
+				@include span-columns(12);
+			}
+			.content {
+				@include span-columns(12);
+			}
 		}
 	}
 }
@@ -222,9 +405,23 @@ footer {
 			p {
 				text-indent:0;
 			}
+			@include media($wl480) {
+				@incldue span-columns(12);
+				@include shift(0);
+				text-align:left;
+				margin:0;
+			}
+			@include media($wl768) {
+				@include span-columns(6);
+				@include shift(3);
+			}
+
 		}
 		.content {
 			@include span-columns(8);
+			@include media($wl768) {
+				@include span-columns(12);
+			}
 		}
 		form {
 			div {
@@ -240,6 +437,20 @@ footer {
 			}
 			button {
 				float:right;
+			}
+			@include media($wl480) { 
+				label {
+					@include span-columns(12);
+					text-align:left;
+				}
+				input,textarea {
+					@include span-columns(12);
+				}
+			}
+		}
+		@include media($wl480) {
+			.content {
+				padding:0;
 			}
 		}
 	}

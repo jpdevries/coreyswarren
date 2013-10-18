@@ -5,3 +5,4 @@ _build/templates/default/scss/bourbon
 _build/templates/default/scss/font-awesome
 _build/templates/default/scss/neat
 _build/templates/default/scss/html5-boilerplate
+*.tmproj

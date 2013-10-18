@@ -1,4 +1,9 @@
 @import "flexslider";
+@import "flexslider-override";
+
+body {
+	@include image-set('../img/subtle_grunge.png', '../img/subtle_grunge@2X.png?nc=' + $nc);
+}
 
 a {
 	@include transition(all 240ms ease-out);
@@ -23,15 +28,58 @@ textarea {
 	resize:none;
 }
 
+%bebas {
+	font-family:"Bebas",sans-serif;
+}
+
+%permanent-marker {
+	font-family:"PermanentMarker",sans-serif;
+	font-size:15px;
+}
+
+.marker, .slides p, .t-1 .content { /* #shame */
+	@extend %permanent-marker;
+	text-align:center;
+}
+
+.t-5 {
+	.content {
+		h1,p {
+			@extend %permanent-marker;
+			text-align:center;
+		}
+		h1 {
+			font-size:1.8em;
+		}
+
+	}
+}
+
+form {
+	@extend %permanent-marker;
+}
+
+
+.content {
+	h1 {
+		margin-bottom:0;
+	}
+	p {
+		margin-top:0;
+	}
+}
+
 header {
 	padding-bottom:4px;
-	border-bottom:4px solid $black;
 	nav {
 		ul {
+			border-bottom:4px solid $black;
+			
 			li {
 				text-transform:uppercase;
-				font-weight:bold;
+				font-weight:normal;
 				padding-top:pxToRem(48px);
+				margin-bottom:4px;
 				&.home {
 					padding:0;
 					a {
@@ -45,7 +93,7 @@ header {
 				}
 				&.home {
 					a {
-						border-right:1px solid transparent;
+						border-right:3px solid transparent;
 					}
 				}
 			}
@@ -60,7 +108,7 @@ nav {
 .no-js {
 	.flexslider {
 		li {
-			border-bottom:4px solid $black;
+			border-bottom:3px solid $black;
 		}
 	}
 }
@@ -70,15 +118,26 @@ header, footer {
 		ul {
 			li {
 				a {
-					border-right:1px solid $black;
+					border-right:4px solid $black;
 				}
 				&:last-of-type {
 					a {
-						border-right:1px solid transparent;
+						border-right:none;
 					}
 				}
 			}
 		}
+	}
+}
+
+header {
+	@extend %permanent-marker;
+}
+
+footer {
+	ul {
+		@extend %permanent-marker;
+		font-size:inherit;
 	}
 }
 
@@ -140,24 +199,36 @@ footer {
 			}
 		}
 	}
-}
-
-.photography, .design {
 	header {
-		z-index:$topMost;
-		position:relative;
-		background:$white;
-		background:rgba($white,0.5);
-	}
-	.content {
-		margin-top:-110px !important;
-		position:relative;
-		z-index:1;
-		@include media($wl768) {
-			margin-top:-76px !important;
+		nav {
+			ul {
+				li {
+					&.home {
+						margin-left:-1px; /* shame */
+					}
+				}
+			}
 		}
 	}
 }
+
+/*.photography, .design {*/
+	header {
+		z-index:$topMost;
+		position:relative;
+		background:rgba($white,0.7);
+	}
+	header,footer {
+		/*background:rgba($white,0.7);*/
+	}
+	.content {
+		position:relative;
+		z-index:1;
+		/*@include media($wl768) {
+
+		}*/
+	}
+/*}*/
 
 .contact {
 	aside {
