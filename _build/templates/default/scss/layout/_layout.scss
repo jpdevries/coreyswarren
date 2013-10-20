@@ -32,6 +32,13 @@ body {
 	}
 }
 
+iframe {
+	width:758px;
+	height:426px;
+	max-width:100%;
+	display:block;
+}
+
 .instagram {
 	div {
 		margin:10px 10px 0 0;
@@ -163,7 +170,7 @@ header {
 }
 
 /* #shame */
-.no-flexbox, .no-js {
+/*.no-flexbox, .no-js {
 	header {
 		nav {
 			ul {
@@ -202,6 +209,15 @@ header {
 				}
 			}
 		}
+	}
+}*/
+
+.no-flexbox, .no-js {
+	header nav ul li a {
+		padding:0 20px;
+	}
+	footer div li a {
+		padding:0 30px;
 	}
 }
 
